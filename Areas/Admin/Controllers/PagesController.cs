@@ -48,7 +48,8 @@ namespace Shopping_Cart.Areas.Admin.Controllers
         {
             page.Slug = page.Title.ToLower().Replace(" ", "-");
             page.Sorting = 100;
-            if (!ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 
                 var slug = await context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);

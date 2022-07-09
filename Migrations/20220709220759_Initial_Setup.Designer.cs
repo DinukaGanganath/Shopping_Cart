@@ -9,8 +9,8 @@ using Shopping_Cart.Infrastructure;
 namespace Shopping_Cart.Migrations
 {
     [DbContext(typeof(ShoppingCartContext))]
-    [Migration("20220704113851_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220709220759_Initial_Setup")]
+    partial class Initial_Setup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,18 +28,15 @@ namespace Shopping_Cart.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Sorting")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
