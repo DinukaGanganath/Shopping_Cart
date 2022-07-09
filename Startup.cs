@@ -26,6 +26,7 @@ namespace Shopping_Cart
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<ShoppingCartContext>(option => option.UseSqlServer(Configuration.GetConnectionString("ShoppingCartContext")));
         }
 

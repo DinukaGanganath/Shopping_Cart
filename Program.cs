@@ -24,9 +24,9 @@ namespace Shopping_Cart
                 try
                 {
                     SeedData.Initialize(services);
-                }catch(Exception)
+                }catch(Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
             }
 
@@ -34,8 +34,7 @@ namespace Shopping_Cart
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
