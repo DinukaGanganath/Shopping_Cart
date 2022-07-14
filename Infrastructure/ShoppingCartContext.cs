@@ -11,5 +11,6 @@ namespace Shopping_Cart.Infrastructure
         }
 
         public DbSet<Page> Pages { get; set; }
+        public DbSet<Category> Categories{ get; set; }
     }
 }
