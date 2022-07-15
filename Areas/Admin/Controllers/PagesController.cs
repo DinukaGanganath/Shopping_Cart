@@ -49,12 +49,11 @@ namespace Shopping_Cart.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Page page)
         {
-            page.Slug = page.Title.ToLower().Replace(" ", "-");
-            page.Sorting = 100;
 
             if (ModelState.IsValid)
             {
-                
+                page.Slug = page.Title.ToLower().Replace(" ", "-");
+                page.Sorting = 100;
                 var slug = await context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);
 
                 if (slug != null)
