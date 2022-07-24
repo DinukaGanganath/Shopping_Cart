@@ -36,6 +36,18 @@ namespace Shopping_Cart.Areas.Admin.Controllers
             return View(await products.ToListAsync());
         }
 
+        // GET: /admin/products/details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            Product product = await context.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
         // GET: /admin/pages/create
         public IActionResult Create()
         {
@@ -87,5 +99,7 @@ namespace Shopping_Cart.Areas.Admin.Controllers
             }
             return View(product);
         }
+
+        
     }
 }
