@@ -21,7 +21,7 @@ namespace Shopping_Cart.Infrastructure
                 string[] extensions = { "jpg", "png" };
                 bool result = extensions.Any(x => extension.EndsWith(x));
 
-                if(result)
+                if(!result)
                 {
                     return new ValidationResult(GetErrorMessage());
                 }
