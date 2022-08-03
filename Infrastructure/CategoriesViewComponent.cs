@@ -18,11 +18,11 @@ namespace Shopping_Cart.Infrastructure
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = await GetPagesAsync();
+            var categories = await GetCategoriesAsync();
             return View(categories);
         }
 
-        private Task<List<Category>> GetPagesAsync()
+        private Task<List<Category>> GetCategoriesAsync()
         {
             return context.Categories.OrderBy(x => x.Sorting).ToListAsync();
         }
