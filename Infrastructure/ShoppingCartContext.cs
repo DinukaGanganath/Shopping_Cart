@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Shopping_Cart.Models;
 
 namespace Shopping_Cart.Infrastructure
 {
-    public class ShoppingCartContext : DbContext
+    public class ShoppingCartContext : IdentityDbContext<AppUser>
     {
         public ShoppingCartContext(DbContextOptions<ShoppingCartContext> options)
             : base(options) 

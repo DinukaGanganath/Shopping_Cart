@@ -67,9 +67,8 @@ namespace Shopping_Cart.Controllers
             {
                 cart.RemoveAll(x => x.ProductId == id);
             }
-            
-            
-            if(cart.Count == 0)
+
+            if (cart.Count == 0)
             {
                 HttpContext.Session.Remove("Cart");
             }
@@ -77,6 +76,7 @@ namespace Shopping_Cart.Controllers
             {
                 HttpContext.Session.SetJson("Cart", cart);
             }
+
             return RedirectToAction("Index");
         }
 
@@ -105,7 +105,13 @@ namespace Shopping_Cart.Controllers
         {
             HttpContext.Session.Remove("Cart");
 
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            //return Redirect("/");
+
+            if (HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
+                return Redirect(Request.Headers["Referer"].ToString());
+
+            return Ok();
         }
     }
 }
