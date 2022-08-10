@@ -5,7 +5,7 @@ using Shopping_Cart.Models;
 
 namespace Shopping_Cart.Areas.Admin.Controllers
 {
-    [Authorize(Roles="admin")]
+    [Authorize(Roles="Admin")]
     [Area("Admin")]
     public class UserController : Controller
     {

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Shopping_Cart.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class PagesController : Controller
     {
