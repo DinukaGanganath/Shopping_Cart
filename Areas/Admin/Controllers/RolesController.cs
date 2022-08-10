@@ -49,7 +49,7 @@ namespace Shopping_Cart.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: /admin/roles/edit
+        // GET: /admin/roles/edit/5
         public async Task<IActionResult> Edit(string id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(id);
@@ -68,6 +68,28 @@ namespace Shopping_Cart.Areas.Admin.Controllers
                 Members = members,
                 NonMembers = nonMembers
             });
+        }
+
+        // POST: /admin/roles/edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(RoleEdit roleEdit)
+        {
+            IdentityResult result;
+
+            foreach(string userId in roleEdit.AddIds ?? new string[] {})
+            {
+                AppUser user = await userManager.FindByIdAsync(userId);
+                result = await userManager.AddToRoleAsync(user, roleEdit.RoleName);
+            }
+
+            foreach (string userId in roleEdit.DeleteIds ?? new string[] { })
+            {
+                AppUser user = await userManager.FindByIdAsync(userId);
+                result = await userManager.RemoveFromRoleAsync(user, roleEdit.RoleName);
+            }
+
+            return Redirect(Request.Headers["Referer"].ToString());
         }
     }
 }
