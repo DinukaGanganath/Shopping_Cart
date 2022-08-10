@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Cart.Models;
 
 namespace Shopping_Cart.Areas.Admin.Controllers
 {
+    [Authorize(Roles="admin")]
     [Area("Admin")]
     public class UserController : Controller
     {
